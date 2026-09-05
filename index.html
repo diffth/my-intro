@@ -287,8 +287,18 @@
     .social { justify-content: center; }
   }
 
+  /* 모션 감소 선호 시 애니메이션 중지 */
   @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .particle {
+      animation: none !important;
+      transform: none !important;
+    }
   }
 </style>
 </head>
