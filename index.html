@@ -298,6 +298,12 @@
         const posX = (Math.random() * 100).toFixed(2);
         const posY = (Math.random() * 100).toFixed(2);
 
+        // 떠다니는 주기: 16초 ~ 36초
+        const duration = (Math.random() * 20 + 16).toFixed(1);
+        
+        // 이미 떠다니는 중인 것처럼 보이기 위해 음수 딜레이 적용 (-30s ~ 0s)
+        const delay = (-(Math.random() * 30)).toFixed(1);
+
         // 은은한 투명도 (0.2 ~ 0.6)
         const opacity = (Math.random() * 0.4 + 0.2).toFixed(2);
 
@@ -306,6 +312,8 @@
         dot.style.left = `${posX}%`;
         dot.style.top = `${posY}%`;
         dot.style.opacity = opacity;
+        dot.style.setProperty('--duration', `${duration}s`);
+        dot.style.animationDelay = `${delay}s`;
 
         // 점마다 고유한 궤적 파라미터 (CSS 변수)
         const tx1 = (Math.random() * 80 - 40).toFixed(0);
