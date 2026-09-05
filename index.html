@@ -252,5 +252,24 @@
       </a>
     </nav>
   </main>
+
+  <script>
+    // 배경에 떠다니는 작은 점 30개 동적 생성
+    (function createFloatingDots() {
+      const container = document.getElementById('particles');
+      if (!container) return;
+      
+      const DOT_COUNT = 30;
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 0; i < DOT_COUNT; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'particle';
+        fragment.appendChild(dot);
+      }
+
+      container.appendChild(fragment);
+    })();
+  </script>
 </body>
 </html>
