@@ -73,6 +73,23 @@
     background: radial-gradient(circle at 35% 35%, rgba(125, 211, 252, 0.85) 0%, rgba(14, 165, 233, 0.45) 60%, rgba(14, 165, 233, 0.1) 100%);
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
     opacity: 0.55;
+    animation: floatParticle var(--duration, 20s) ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  @keyframes floatParticle {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    33% {
+      transform: translate3d(var(--tx1, 20px), var(--ty1, -30px), 0) scale(1.1);
+    }
+    66% {
+      transform: translate3d(var(--tx2, -25px), var(--ty2, -60px), 0) scale(0.92);
+    }
+    100% {
+      transform: translate3d(var(--tx3, 15px), var(--ty3, -90px), 0) scale(1.05);
+    }
   }
 
   .card {
@@ -289,6 +306,21 @@
         dot.style.left = `${posX}%`;
         dot.style.top = `${posY}%`;
         dot.style.opacity = opacity;
+
+        // 점마다 고유한 궤적 파라미터 (CSS 변수)
+        const tx1 = (Math.random() * 80 - 40).toFixed(0);
+        const ty1 = (Math.random() * 80 - 40).toFixed(0);
+        const tx2 = (Math.random() * 100 - 50).toFixed(0);
+        const ty2 = (Math.random() * 100 - 50).toFixed(0);
+        const tx3 = (Math.random() * 60 - 30).toFixed(0);
+        const ty3 = (Math.random() * 60 - 30).toFixed(0);
+
+        dot.style.setProperty('--tx1', `${tx1}px`);
+        dot.style.setProperty('--ty1', `${ty1}px`);
+        dot.style.setProperty('--tx2', `${tx2}px`);
+        dot.style.setProperty('--ty2', `${ty2}px`);
+        dot.style.setProperty('--tx3', `${tx3}px`);
+        dot.style.setProperty('--ty3', `${ty3}px`);
 
         fragment.appendChild(dot);
       }
