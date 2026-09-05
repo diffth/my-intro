@@ -72,6 +72,7 @@
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, rgba(125, 211, 252, 0.85) 0%, rgba(14, 165, 233, 0.45) 60%, rgba(14, 165, 233, 0.1) 100%);
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+    opacity: 0.55;
   }
 
   .card {
@@ -272,6 +273,23 @@
       for (let i = 0; i < DOT_COUNT; i++) {
         const dot = document.createElement('div');
         dot.className = 'particle';
+
+        // 크기: 4px ~ 14px 다양하게 설정
+        const size = Math.floor(Math.random() * 11) + 4;
+        
+        // 초기 위치 (0% ~ 100%)
+        const posX = (Math.random() * 100).toFixed(2);
+        const posY = (Math.random() * 100).toFixed(2);
+
+        // 은은한 투명도 (0.2 ~ 0.6)
+        const opacity = (Math.random() * 0.4 + 0.2).toFixed(2);
+
+        dot.style.width = `${size}px`;
+        dot.style.height = `${size}px`;
+        dot.style.left = `${posX}%`;
+        dot.style.top = `${posY}%`;
+        dot.style.opacity = opacity;
+
         fragment.appendChild(dot);
       }
 
